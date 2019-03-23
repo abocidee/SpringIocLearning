@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+     <!--  <context:annotation-config base-package="cn.tedu.spring.config"/> -->
+     <context:annotation-config />
+     <!-- <配置组件扫描> -->
+      <context:component-scan base-package="cn.tedu.spring.entity"/>
+      <context:component-scan base-package="cn.tedu.spring.controller"/>
+   <!--  <lang:groovy id="messenger"
+            script-source="classpath:org/springframework/scripting/groovy/Messenger.groovy">
+        <lang:property name="message" value="Fiona Apple Is Just So Dreamy."/>
+    </lang:groovy> -->
+
+    <!--
+    when the above bean (messenger) is instantiated, this custom
+    BeanPostProcessor implementation will output the fact to the system console
+    -->
+     <!-- 读取properties文件内容配置 -->
+    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+    <property name="locations" value="classpath:jdbc.properties"/>
+    </bean>
+    
+    <!--重写属性 -->
+    <bean class="org.springframework.beans.factory.config.PropertyOverrideConfigurer">
+    <property name="locations">
+    <list>
+    <value>override.properties</value>
+    </list>
+    </property>
+    </bean>
+    
+     <!--  实例 -->
+    <bean name="duck" class="cn.tedu.spring.entity.Duck">
+    <property name="name"  value="duck bean property in xml"></property>
+    </bean>
+    
+     <bean name="lu" class="cn.tedu.spring.entity.LuNongYun">
+     <qualifier value="full"></qualifier>
+    <property name="name"  value="lunongyun"></property>
+    <property name="gender"  value="male full qualifier"></property>
+    </bean>
+    
+     <bean name="lunong" class="cn.tedu.spring.entity.LuNongYun">
+     <qualifier value="half"></qualifier>
+    <property name="name"  value="lunongyun  half qualifier"></property>
+    </bean>
+    
+    <bean name="dog"  class="cn.tedu.spring.entity.Dog">
+     <constructor-arg type="java.lang.String"  value="dog field"></constructor-arg> 
+    <!--  <property name="name" value="facai"></property> -->
+    </bean>
+    <bean name="movie" class="cn.tedu.spring.entity.Movie">
+    <constructor-arg type="java.lang.String"  value="${movie.name}" />
+    </bean>
+    
+ 
+    <bean class="cn.tedu.spring.processer.InstantiationTracingBeanPostProcessor"></bean>
+    <bean class="cn.tedu.spring.processer.BeanFactorypp"></bean>
+    
+    
+
+</beans>
