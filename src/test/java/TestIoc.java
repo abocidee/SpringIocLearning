@@ -13,6 +13,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import cn.tedu.spring.config.DBUtil;
+import cn.tedu.spring.controller.CatController;
 import cn.tedu.spring.controller.LuNongYunController;
 import cn.tedu.spring.entity.Cat;
 import cn.tedu.spring.entity.Dog;
@@ -20,6 +21,7 @@ import cn.tedu.spring.entity.Duck;
 import cn.tedu.spring.entity.LuNongYun;
 import cn.tedu.spring.entity.Movie;
 import cn.tedu.spring.entity.Picture;
+import cn.tedu.spring.service.UserServiceImpl;
 
 public class TestIoc {
   
@@ -92,5 +94,19 @@ public class TestIoc {
         System.out.println(picture);
         System.out.println(picture.getPen());
 		  ((AbstractApplicationContext) applicationContext).close();
+	}
+	
+	/**
+	 * 测试filter 包浏览 
+	 * include filter  代表可以实例化 
+	 * exclude filter  不可以实例化
+	 */
+	@Test
+	public void testScan() {
+		ApplicationContext applicationContext = new AnnotationConfigApplicationContext("cn.tedu.spring.config");
+		UserServiceImpl dog =applicationContext.getBean(UserServiceImpl.class);
+		//CatController cat =applicationContext.getBean(CatController.class);
+		System.out.println("filter"+dog);
+		 ((AbstractApplicationContext) applicationContext).close();
 	}
 }

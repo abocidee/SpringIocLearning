@@ -13,7 +13,7 @@ import cn.tedu.spring.service.ex.UserNotFoundException;
 public class UserServiceImpl
 	implements IUserService {
 	
-	@Resource
+	
 	private UserMapper userMapper;
 
 	public User findUserById(Integer id) {
@@ -21,22 +21,22 @@ public class UserServiceImpl
 	}
 
 	public void changePassword(Integer id, String oldPassword, String newPassword) {
-		// ¸ù¾İidÕÒÓÃ»§
+		// ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½Ã»ï¿½
 		User user = findUserById(id);
-		// ÅĞ¶ÏÓÃ»§ÊÇ·ñ´æÔÚ
+		// ï¿½Ğ¶ï¿½ï¿½Ã»ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 		if (user == null) {
-			// ÓÃ»§²»´æÔÚ
+			// ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			throw new UserNotFoundException(
-				"²Ù×÷Ê§°Ü£¡ÓÃ»§ĞÅÏ¢²»´æÔÚ£¬»òµÇÂ¼ÒÑ¹ıÆÚ£¡");
+				"ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½Â¼ï¿½Ñ¹ï¿½ï¿½Ú£ï¿½");
 		} else {
-			// ÓÃ»§´æÔÚ£¬ÔòÅĞ¶ÏÔ­ÃÜÂë
+			// ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½Ğ¶ï¿½Ô­ï¿½ï¿½ï¿½ï¿½
 			if (user.getPassword().equals(oldPassword)) {
-				// Ô­ÃÜÂëÆ¥Åä£¬Ö´ĞĞ¸üĞÂ
+				// Ô­ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ä£¬Ö´ï¿½Ğ¸ï¿½ï¿½ï¿½
 				userMapper.changePassword(id, newPassword);
 			} else {
-				// Ô­ÃÜÂë²»Æ¥Åä
+				// Ô­ï¿½ï¿½ï¿½ë²»Æ¥ï¿½ï¿½
 				throw new PasswordNotMatchException(
-					"²Ù×÷Ê§°Ü£¡Ô­ÃÜÂë²»ÕıÈ·£¡");
+					"ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½Ô­ï¿½ï¿½ï¿½ë²»ï¿½ï¿½È·ï¿½ï¿½");
 			}
 		}
 	}

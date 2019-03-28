@@ -8,11 +8,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ClassPathBeanDefinitionScanner;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Controller;
 
 import cn.tedu.spring.config.MovieConfiguration;
 import cn.tedu.spring.entity.Cat;
 import cn.tedu.spring.entity.Elephant;
-
+@Controller
 public class CatController {
     
 	private Cat cat;
