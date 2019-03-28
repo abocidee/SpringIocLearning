@@ -19,6 +19,7 @@ import cn.tedu.spring.entity.Dog;
 import cn.tedu.spring.entity.Duck;
 import cn.tedu.spring.entity.LuNongYun;
 import cn.tedu.spring.entity.Movie;
+import cn.tedu.spring.entity.Picture;
 
 public class TestIoc {
   
@@ -79,5 +80,17 @@ public class TestIoc {
 		 LuNongYunController luNongYun =aContext.getBean(LuNongYunController.class);
           luNongYun.run();
           ((AbstractApplicationContext) aContext).close();
+	}
+	
+	/**
+	 * 测试注解@resouce跟据name自动连接 
+	 */
+	@Test
+	public void testPicture() {
+		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("bean.xml");
+		Picture picture=applicationContext.getBean(Picture.class);
+        System.out.println(picture);
+        System.out.println(picture.getPen());
+		  ((AbstractApplicationContext) applicationContext).close();
 	}
 }

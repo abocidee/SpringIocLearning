@@ -54,10 +54,18 @@
      <constructor-arg type="java.lang.String"  value="dog field"></constructor-arg> 
     <!--  <property name="name" value="facai"></property> -->
     </bean>
-    <bean name="movie" class="cn.tedu.spring.entity.Movie">
+   <!--  <bean  id ="movie" class="cn.tedu.spring.entity.Movie">
+    <qualifier type="genre" value="comdy"></qualifier>
     <constructor-arg type="java.lang.String"  value="${movie.name}" />
+    </bean> -->
+    
+    <bean  id="movie" class="cn.tedu.spring.entity.Movie">
+    <!-- <qualifier type="genre" value="action"></qualifier> -->
+    <constructor-arg type="java.lang.String"  value="action movie" />
     </bean>
     
+    <bean  name="picture"  class="cn.tedu.spring.entity.Picture"></bean>
+    <bean name="pen"   class="cn.tedu.spring.entity.Pen"></bean>
  
     <bean class="cn.tedu.spring.processer.InstantiationTracingBeanPostProcessor"></bean>
     <bean class="cn.tedu.spring.processer.BeanFactorypp"></bean>

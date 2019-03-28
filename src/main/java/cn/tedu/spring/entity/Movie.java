@@ -37,5 +37,8 @@ public Movie(String name, Timestamp onlinedate) {
 	this.onlinedate = onlinedate;
 }
    
+public void sayHello() {
+	System.out.println("movie class Hello");
+}
    
 }
