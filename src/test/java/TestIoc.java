@@ -12,6 +12,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import cn.tedu.spring.component.FactoryMethodComponent;
 import cn.tedu.spring.config.DBUtil;
 import cn.tedu.spring.controller.CatController;
 import cn.tedu.spring.controller.LuNongYunController;
@@ -72,7 +73,7 @@ public class TestIoc {
 	public void testcat() {
 		ApplicationContext aContext =new AnnotationConfigApplicationContext("cn.tedu.spring.config");
 		 Cat cat =aContext.getBean(Cat.class);
-		System.out.println(cat.getName());
+		System.out.println(cat);
 		((AbstractApplicationContext) aContext).close();
 	}
 	
@@ -107,6 +108,14 @@ public class TestIoc {
 		UserServiceImpl dog =applicationContext.getBean(UserServiceImpl.class);
 		//CatController cat =applicationContext.getBean(CatController.class);
 		System.out.println("filter"+dog);
+		 ((AbstractApplicationContext) applicationContext).close();
+	}
+	
+	@Test
+	public void testComponentMetadata() {
+		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("bean2.xml");
+		FactoryMethodComponent factoryMethodComponent=applicationContext.getBean(FactoryMethodComponent.class);
+         System.out.println(factoryMethodComponent);
 		 ((AbstractApplicationContext) applicationContext).close();
 	}
 }

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Primary;
 import cn.tedu.spring.entity.Cat;
 
 @Configuration
-@ComponentScan(basePackages="cn.tedu.spring.entity")
+@ComponentScan(basePackages="cn.tedu.spring.config")
 public class MovieConfiguration {
   
 	@Bean

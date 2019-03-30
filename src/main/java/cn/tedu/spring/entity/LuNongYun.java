@@ -6,7 +6,7 @@ public class LuNongYun {
  
  
 public LuNongYun() {
-	super();
+	
 }
 public LuNongYun(String name) {
 	super();

@@ -17,7 +17,8 @@ import cn.tedu.spring.entity.Elephant;
 public class CatController {
     
 	private Cat cat;
-    
+	
+    @Autowired
 	@Required
 	public void setCat(Cat cat) {
 		this.cat = cat;
