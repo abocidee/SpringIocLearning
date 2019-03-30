@@ -22,6 +22,7 @@ import cn.tedu.spring.controller.LuNongYunController;
 import cn.tedu.spring.entity.Cat;
 import cn.tedu.spring.entity.Dog;
 import cn.tedu.spring.entity.Duck;
+import cn.tedu.spring.entity.Elephant;
 import cn.tedu.spring.entity.LuNongYun;
 import cn.tedu.spring.entity.Movie;
 import cn.tedu.spring.entity.Picture;
@@ -140,8 +141,14 @@ public class TestIoc {
 		AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext();
 		annotationConfigApplicationContext.register(MovieConfiguration.class);
 		annotationConfigApplicationContext.register(AppConfig.class);
+		annotationConfigApplicationContext.scan("cn.tedu.spring.entity");
+		
 		annotationConfigApplicationContext.refresh();
 		UserServiceImpl userServiceImpl =annotationConfigApplicationContext.getBean(UserServiceImpl.class);
+		Elephant elephant = annotationConfigApplicationContext.getBean(Elephant.class);
+		System.out.println(elephant);
+//		Duck duck = annotationConfigApplicationContext.getBean(Duck.class);
+//		System.out.println(duck);
 	System.out.println(userServiceImpl);
 	Cat cat =	annotationConfigApplicationContext.getBean(Cat.class);
 	System.out.println(cat);
