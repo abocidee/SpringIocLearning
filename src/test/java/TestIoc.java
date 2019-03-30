@@ -7,13 +7,16 @@ import java.sql.SQLException;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.support.BeanNameGenerator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import cn.tedu.spring.component.FactoryMethodComponent;
+import cn.tedu.spring.config.AppConfig;
 import cn.tedu.spring.config.DBUtil;
+import cn.tedu.spring.config.MovieConfiguration;
 import cn.tedu.spring.controller.CatController;
 import cn.tedu.spring.controller.LuNongYunController;
 import cn.tedu.spring.entity.Cat;
@@ -22,6 +25,7 @@ import cn.tedu.spring.entity.Duck;
 import cn.tedu.spring.entity.LuNongYun;
 import cn.tedu.spring.entity.Movie;
 import cn.tedu.spring.entity.Picture;
+import cn.tedu.spring.entity.Tyson;
 import cn.tedu.spring.service.UserServiceImpl;
 
 public class TestIoc {
@@ -110,12 +114,38 @@ public class TestIoc {
 		System.out.println("filter"+dog);
 		 ((AbstractApplicationContext) applicationContext).close();
 	}
-	
+	/**
+	 * 测试component注解中包含bean注解
+	 */
 	@Test
 	public void testComponentMetadata() {
 		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("bean2.xml");
 		FactoryMethodComponent factoryMethodComponent=applicationContext.getBean(FactoryMethodComponent.class);
          System.out.println(factoryMethodComponent);
 		 ((AbstractApplicationContext) applicationContext).close();
+	}
+	/**
+	 * ?
+	 */
+	@Test
+	public void testBeanNameGenerator() {
+		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(FactoryMethodComponent.class);
+		Tyson tyson=applicationContext.getBean(Tyson.class);
+		System.out.println(tyson);
+		((AbstractApplicationContext) applicationContext).close();
+	}
+	
+	@Test
+	public void testRegister() {
+		AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext();
+		annotationConfigApplicationContext.register(MovieConfiguration.class);
+		annotationConfigApplicationContext.register(AppConfig.class);
+		annotationConfigApplicationContext.refresh();
+		UserServiceImpl userServiceImpl =annotationConfigApplicationContext.getBean(UserServiceImpl.class);
+	System.out.println(userServiceImpl);
+	Cat cat =	annotationConfigApplicationContext.getBean(Cat.class);
+	System.out.println(cat);
+	annotationConfigApplicationContext.close();
+		
 	}
 }

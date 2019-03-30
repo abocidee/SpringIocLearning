@@ -6,9 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 import cn.tedu.spring.entity.Cat;
+import cn.tedu.spring.processer.MyNameGenerator;
 
 @Configuration
-@ComponentScan(basePackages="cn.tedu.spring.config")
+@ComponentScan(basePackages="cn.tedu.spring.config" ,nameGenerator=MyNameGenerator.class )
 public class MovieConfiguration {
   
 	@Bean
