@@ -6,11 +6,16 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-     <!--  <context:annotation-config base-package="cn.tedu.spring.config"/> -->
+        
+     <!--  Because <context:annotation-config/> is switched on, 
+     the container recognizes the @Configuration annotation and processes the @Bean 
+     methods declared in AppConfig properly-->
+     
      <context:annotation-config />
      <!-- <配置组件扫描> -->
       <context:component-scan base-package="cn.tedu.spring.entity"/>
       <context:component-scan base-package="cn.tedu.spring.controller"/>
+      <context:component-scan base-package="cn.tedu.spring.config"/>
    <!--  <lang:groovy id="messenger"
             script-source="classpath:org/springframework/scripting/groovy/Messenger.groovy">
         <lang:property name="message" value="Fiona Apple Is Just So Dreamy."/>
@@ -70,6 +75,15 @@
     <bean class="cn.tedu.spring.processer.InstantiationTracingBeanPostProcessor"></bean>
     <bean class="cn.tedu.spring.processer.BeanFactorypp"></bean>
     
+    <!-- this MessageSource is being used in a web application -->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="exceptions"/>
+    </bean>
+
+    <!-- lets inject the above MessageSource into this POJO -->
+    <bean id="example" class="cn.tedu.spring.example.Example">
+        <property name="messages" ref="messageSource"/>
+    </bean>
     
 
 </beans>

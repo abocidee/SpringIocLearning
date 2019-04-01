@@ -2,13 +2,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.Locale;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.support.BeanNameGenerator;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -136,6 +137,10 @@ public class TestIoc {
 		((AbstractApplicationContext) applicationContext).close();
 	}
 	
+	/**
+	 * You can use the @Bean annotation in a @Configuration-annotated or in a @Component-annotated class.
+	 * You can also declare your @Bean method with an interface (or base class) return type, as the following example shows:
+	 */
 	@Test
 	public void testRegister() {
 		AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext();
@@ -152,7 +157,20 @@ public class TestIoc {
 	System.out.println(userServiceImpl);
 	Cat cat =	annotationConfigApplicationContext.getBean(Cat.class);
 	System.out.println(cat);
-	annotationConfigApplicationContext.close();
+	((AbstractApplicationContext) annotationConfigApplicationContext).close();
 		
+	}
+	/**
+	 * To summarize, the MessageSource is defined in a file called beans.xml, 
+	 * which exists at the root of your classpath. The messageSource bean definition refers to a number of resource bundles through its basenames property.
+	 *  The three files that are passed in the list to the basenames property exist as files at the root of your classpath and are called format.properties,
+	 *   exceptions.properties, and windows.properties, respectively.
+	 */
+	@Test
+	public void testMessageSource() {
+		MessageSource resources = new ClassPathXmlApplicationContext("bean.xml");
+	    String message = resources.getMessage("argument.required",
+	        new Object [] {"userDao"}, "Requiredmessage", Locale.UK);
+	    System.out.println(message);
 	}
 }

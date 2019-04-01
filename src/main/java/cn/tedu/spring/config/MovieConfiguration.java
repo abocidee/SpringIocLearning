@@ -9,7 +9,7 @@ import cn.tedu.spring.entity.Cat;
 import cn.tedu.spring.processer.MyNameGenerator;
 
 @Configuration
-@ComponentScan(basePackages="cn.tedu.spring.config" ,nameGenerator=MyNameGenerator.class )
+@ComponentScan(basePackages="cn.tedu.spring.config" )
 public class MovieConfiguration {
   
 	@Bean
