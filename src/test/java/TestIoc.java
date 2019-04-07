@@ -19,12 +19,9 @@ import cn.tedu.spring.config.AppConfig;
 import cn.tedu.spring.config.DBUtil;
 import cn.tedu.spring.config.MovieConfiguration;
 import cn.tedu.spring.controller.CatController;
-import cn.tedu.spring.controller.LuNongYunController;
 import cn.tedu.spring.entity.Cat;
-import cn.tedu.spring.entity.Dog;
 import cn.tedu.spring.entity.Duck;
 import cn.tedu.spring.entity.Elephant;
-import cn.tedu.spring.entity.LuNongYun;
 import cn.tedu.spring.entity.Movie;
 import cn.tedu.spring.entity.Picture;
 import cn.tedu.spring.entity.Tyson;
@@ -60,9 +57,6 @@ public class TestIoc {
 	public void test() {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("bean.xml");
 	     Movie movie =  (Movie) ac.getBean("movie",Movie.class);
-	     
-	     Dog dog = ac.getBean(Dog.class);
-	     System.out.println(dog.getName());
 	     System.out.println(movie.getName());
 	     ((AbstractApplicationContext) ac).close();
 	}
@@ -81,14 +75,6 @@ public class TestIoc {
 		 Cat cat =aContext.getBean(Cat.class);
 		System.out.println(cat);
 		((AbstractApplicationContext) aContext).close();
-	}
-	
-	@Test
-	public void testLunongyun() {
-		ApplicationContext aContext =new ClassPathXmlApplicationContext("bean.xml");
-		 LuNongYunController luNongYun =aContext.getBean(LuNongYunController.class);
-          luNongYun.run();
-          ((AbstractApplicationContext) aContext).close();
 	}
 	
 	/**

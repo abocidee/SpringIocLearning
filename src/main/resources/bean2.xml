@@ -11,9 +11,9 @@
      <!-- <配置组件扫描> -->
       <context:component-scan base-package="cn.tedu.spring"/>
      <!--配置卢农云实例  -->
-     <bean name="alu" class="cn.tedu.spring.entity.LuNongYun">
-     <qualifier value="half"></qualifier>
-     </bean>
+    <!--  <bean name="alu" class="cn.tedu.spring.entity.LuNongYun">
+     <qualifier value="halfh"></qualifier>
+     </bean> -->
      <!--配置cat实例-->
      <bean id="cat"  class="cn.tedu.spring.entity.Cat"></bean>
      <bean  id="catcontroller" class="cn.tedu.spring.controller.CatController"> 

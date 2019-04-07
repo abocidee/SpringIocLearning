@@ -16,10 +16,9 @@
       <context:component-scan base-package="cn.tedu.spring.entity"/>
       <context:component-scan base-package="cn.tedu.spring.controller"/>
       <context:component-scan base-package="cn.tedu.spring.config"/>
-   <!--  <lang:groovy id="messenger"
-            script-source="classpath:org/springframework/scripting/groovy/Messenger.groovy">
-        <lang:property name="message" value="Fiona Apple Is Just So Dreamy."/>
-    </lang:groovy> -->
+<!-- 
+	<util:properties id="overConfig"
+		location="classpath:override.properties" /> -->
 
     <!--
     when the above bean (messenger) is instantiated, this custom
@@ -31,34 +30,23 @@
     </bean>
     
     <!--重写属性 -->
-    <bean class="org.springframework.beans.factory.config.PropertyOverrideConfigurer">
+  <!--   <bean class="org.springframework.beans.factory.config.PropertyOverrideConfigurer">
     <property name="locations">
     <list>
-    <value>override.properties</value>
+    <value>/override.properties</value>
     </list>
     </property>
-    </bean>
+    </bean>  -->
     
      <!--  实例 -->
     <bean name="duck" class="cn.tedu.spring.entity.Duck">
     <property name="name"  value="duck bean property in xml"></property>
     </bean>
     
-     <bean name="lu" class="cn.tedu.spring.entity.LuNongYun">
-     <qualifier value="full"></qualifier>
-    <property name="name"  value="lunongyun"></property>
-    <property name="gender"  value="male full qualifier"></property>
-    </bean>
-    
-     <bean name="lunong" class="cn.tedu.spring.entity.LuNongYun">
+    <!--  <bean name="lunong" class="cn.tedu.spring.entity.LuNongYun">
      <qualifier value="half"></qualifier>
     <property name="name"  value="lunongyun  half qualifier"></property>
-    </bean>
-    
-    <bean name="dog"  class="cn.tedu.spring.entity.Dog">
-     <constructor-arg type="java.lang.String"  value="dog field"></constructor-arg> 
-    <!--  <property name="name" value="facai"></property> -->
-    </bean>
+    </bean> -->
    <!--  <bean  id ="movie" class="cn.tedu.spring.entity.Movie">
     <qualifier type="genre" value="comdy"></qualifier>
     <constructor-arg type="java.lang.String"  value="${movie.name}" />

@@ -28,7 +28,7 @@
 	
 	<!-- 根据用户id查询用户信息 -->
 	<!-- User findUserById(Integer id) -->
-	<select id="findUserById"
+	<select id="findUserById"  parameterType="int"
 		resultType="cn.tedu.spring.entity.User">
 		SELECT 
 			id, username, password, age 
