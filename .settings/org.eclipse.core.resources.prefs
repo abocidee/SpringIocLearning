@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
-encoding//src/main/java/cn/tedu/spring/mapper/UserMapper.java=gbk
+encoding//src/main/java/cn/tedu/spring/mapper/UserMapper.java=UTF-8
 encoding//src/main/java/cn/tedu/spring/service/IUserService.java=gbk
-encoding//src/main/java/cn/tedu/spring/service/UserServiceImpl.java=gbk
+encoding//src/main/java/cn/tedu/spring/service/UserServiceImpl.java=UTF-8
