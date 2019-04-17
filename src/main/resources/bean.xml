@@ -72,6 +72,7 @@
     <bean id="example" class="cn.tedu.spring.example.Example">
         <property name="messages" ref="messageSource"/>
     </bean>
+    <bean id="crosFilter" class="cn.tedu.spring.config.CorsFilter"></bean>
     
 
 </beans>

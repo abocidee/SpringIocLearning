@@ -3,6 +3,8 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.tedu.spring.entity.User;
 import cn.tedu.spring.mapper.UserMapper;
@@ -158,9 +160,11 @@ public class TestMapper {
 			"affectedRows=" + affectedRows);
 		
 		Integer id = user.getId();
-		System.out.println("user id=" + id);
+		 System.out.println("user id=" + id);
 		
-		ac.close();
+		  ac.close();
 	}
+	
+  
 	
 }
