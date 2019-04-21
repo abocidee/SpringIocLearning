@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
 import cn.tedu.spring.entity.User;
 import cn.tedu.spring.mapper.UserMapper;
 import cn.tedu.spring.service.UserServiceImpl;
@@ -25,7 +27,7 @@ public class UserController {
     public void findUser(HttpServletRequest request , HttpServletResponse response) {
     	int id =Integer.parseInt(request.getParameter("id"));
     	request.setAttribute("id", id);
-    	System.out.println("usermapper     "+userMapper);	
+    	System.out.println("user"+userMapper);	
     	User user =userMapper.findUserById(id);
         System.out.println(user.getUsername());
     	
@@ -34,11 +36,8 @@ public class UserController {
     
      @RequestMapping("/findAllUser.do")
      @ResponseBody
-     public List<User> findAllUser(){
+     public String findAllUser(){
     	 List<User> listUser = userMapper.getUserList();
-    	 System.out.println(listUser);
-    	 
-    	 System.out.println(listUser.get(0)+"FS");
-    	 return listUser;
+    	 return new Gson().toJson(listUser);
      }
 }
