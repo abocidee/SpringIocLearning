@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-     <!--  <context:annotation-config base-package="cn.tedu.spring.config"/> -->
-     <context:annotation-config />
-     <!-- <配置组件扫描> -->
-      <context:component-scan base-package="cn.tedu.spring"/>
-     <!--配置卢农云实例  -->
-    <!--  <bean name="alu" class="cn.tedu.spring.entity.LuNongYun">
-     <qualifier value="halfh"></qualifier>
-     </bean> -->
-     <!--配置cat实例-->
-     <bean id="cat"  class="cn.tedu.spring.entity.Cat"></bean>
-     <bean  id="catcontroller" class="cn.tedu.spring.controller.CatController"> 
-     <property name="cat" ref="cat"></property>
-     </bean>
-     <!--配置CustomerService实例  -->
-     <bean id="customerService"  class="cn.tedu.spring.service.CustomerService">
-     <property name="name"  value="zhuobielin"/>
-     <property name="url"  value="www.baidu.com"/>
-     </bean>
-     <!--配置hijackshili aop -->
-     <bean id="hijackBeforeMethod"  class="cn.tedu.spring.aop.HijackBeforeMethod"/>
-     <bean id="afterReturningMethod"  class="cn.tedu.spring.aop.AfterReturnMethod"/>
-     <bean id="throwExceptionMethod"  class="cn.tedu.spring.aop.ThrowExceptionMethod"/>
-     <bean id="aroundMethod"  class="cn.tedu.spring.aop.AroundMethod"/>
-    
-     <!--配置proxyCustomerService实例 -->
-     <bean id="customerServiceProxy" 
-                 class="org.springframework.aop.framework.ProxyFactoryBean">
+	<!-- <context:annotation-config base-package="cn.tedu.spring.config"/> -->
+	<context:annotation-config />
+	<!-- <配置组件扫描> -->
+	<context:component-scan
+		base-package="cn.tedu.spring" />
+	<!--配置卢农云实例 -->
+	<!-- <bean name="alu" class="cn.tedu.spring.entity.LuNongYun"> <qualifier 
+		value="halfh"></qualifier> </bean> -->
+	<!--配置cat实例 -->
+	<bean id="cat" class="cn.tedu.spring.entity.Cat"></bean>
+	<bean id="catcontroller"
+		class="cn.tedu.spring.controller.CatController">
+		<property name="cat" ref="cat"></property>
+	</bean>
+	<!--配置CustomerService实例 -->
+	<bean id="customerService"
+		class="cn.tedu.spring.service.CustomerService">
+		<property name="name" value="zhuobielin" />
+		<property name="url" value="www.baidu.com" />
+	</bean>
+	<!--配置hijackshili aop -->
+	<bean id="hijackBeforeMethod"
+		class="cn.tedu.spring.aop.HijackBeforeMethod" />
+	<bean id="afterReturningMethod"
+		class="cn.tedu.spring.aop.AfterReturnMethod" />
+	<bean id="throwExceptionMethod"
+		class="cn.tedu.spring.aop.ThrowExceptionMethod" />
+	<bean id="aroundMethod" class="cn.tedu.spring.aop.AroundMethod" />
+
+	<!--配置proxyCustomerService实例 -->
+	<bean id="customerServiceProxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
 
 		<property name="target" ref="customerService" />
 

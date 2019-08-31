@@ -5,9 +5,8 @@
 <!-- MyBatis的接口映射文件，根节点是mapper -->
 <!-- 接口映射文件是与Java接口文件(interface)相对应的 -->
 <!-- 根节点的namespace属性用于指定Java接口文件 -->
-<mapper 
-	namespace="cn.tedu.spring.mapper.UserMapper">
-	
+<mapper namespace="cn.tedu.spring.mapper.UserMapper">
+
 	<!-- 节点名称取决于需要执行的操作 -->
 	<!-- 例如增加操作应该使用insert节点 -->
 	<!-- id属性(*)的值是Java接口中的方法名称 -->
@@ -15,99 +14,93 @@
 	<!-- useGeneratedKeys：获取自动递增的字段，取值固定为true -->
 	<!-- keyProperty：需要获取的id在数据表中的字段名 -->
 	<!-- 节点中间编写SQL语句 -->
-	<insert id="reg"
-		parameterType="cn.tedu.spring.entity.User"
-		useGeneratedKeys="true"
-		keyProperty="id">
+	<insert id="reg" parameterType="cn.tedu.spring.entity.User"
+		useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO t_users (
-			username, password
+		username, password
 		) VALUES (
-			#{username}, #{password}
+		#{username}, #{password}
 		)
 	</insert>
-	
+
 	<!-- 根据用户id查询用户信息 -->
 	<!-- User findUserById(Integer id) -->
-	<select id="findUserById"  parameterType="int"
+	<select id="findUserById" parameterType="int"
 		resultType="cn.tedu.spring.entity.User">
-		SELECT 
-			id, username, password, age 
-		FROM 
-			t_users 
-		WHERE 
-			id=#{id}
+		SELECT
+		id, username, password, age
+		FROM
+		t_users
+		WHERE
+		id=#{id}
 	</select>
-	
+
 	<!-- 根据用户名查询用户信息 -->
-	<!-- User findUserByUsername(
-		String username) -->
+	<!-- User findUserByUsername( String username) -->
 	<select id="findUserByUsername"
 		resultType="cn.tedu.spring.entity.User">
-		SELECT 
-			id, username, password, age 
-		FROM 
-			t_users 
-		WHERE 
-			username=#{username}
+		SELECT
+		id, username, password, age
+		FROM
+		t_users
+		WHERE
+		username=#{username}
 	</select>
-	
+
 	<!-- 获取所有用户信息 -->
 	<!-- List<User> getUserList() -->
-	<select id="getUserList"
-		resultType="cn.tedu.spring.entity.User">
-		SELECT 
-			id, username, password, age 
-		FROM 
-			t_users 
+	<select id="getUserList" resultType="cn.tedu.spring.entity.User">
+		SELECT
+		id, username, password, age
+		FROM
+		t_users
 	</select>
-	
+
 	<!-- 删除用户数据 -->
 	<!-- Integer delete(Integer id) -->
 	<delete id="delete">
-		DELETE FROM t_users 
-		WHERE id=#{id}	
+		DELETE FROM t_users
+		WHERE id=#{id}
 	</delete>
-	
+
 	<!-- 修改密码 -->
-	<!-- Integer changePassword(Integer id,
-			String newPassword) -->
+	<!-- Integer changePassword(Integer id, String newPassword) -->
 	<update id="changePassword">
-		UPDATE 
-			t_users 
-		SET 
-			password=#{newPassword} 
-		WHERE 
-			id=#{id}
+		UPDATE
+		t_users
+		SET
+		password=#{newPassword}
+		WHERE
+		id=#{id}
 	</update>
-	
+
 	<!-- 修改年龄 -->
-	<!-- Integer updateAge(Integer id, 
-		Integer age) -->
+	<!-- Integer updateAge(Integer id, Integer age) -->
 	<update id="updateAge">
-		UPDATE 
-			t_users 
-		SET 
-			age=#{age} 
-		WHERE 
-			id=#{id}
+		UPDATE
+		t_users
+		SET
+		age=#{age}
+		WHERE
+		id=#{id}
 	</update>
-	
+
 	<!-- 修改密码或个人资料 -->
 	<!-- Integer update(User user) -->
 	<update id="update">
-		UPDATE 
-			t_users 
-		SET 
-			<if test="age != null">
-				age=#{age}
-			</if> 
-			<if test="password != null">
-				password=#{password}
-			</if> 
-		WHERE 
-			id=#{id}
+		UPDATE
+		t_users
+		SET
+		<if test="age != null">
+			age=#{age}
+		</if>
+		<if test="password != null">
+			password=#{password}
+		</if>
+		WHERE
+		id=#{id}
 	</update>
-	
+
 </mapper>
 
 

@@ -2,7 +2,7 @@ import java.lang.reflect.Method;
 
 import org.springframework.transaction.interceptor.MethodMapTransactionAttributeSource;
 
-import com.google.protobuf.DescriptorProtos.GeneratedCodeInfo.Annotation;
+
 
 
 import cn.tedu.spring.annotation.AnnotationExample;
