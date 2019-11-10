@@ -126,7 +126,7 @@ public class TestMapper {
 		AbstractApplicationContext ac
 			= new ClassPathXmlApplicationContext(
 				"spring-mvc.xml",
-				"spring-dao.xml");
+				"spring-dao.xml","bean2.xml");
 		
 		UserMapper userMapper
 			= ac.getBean(
