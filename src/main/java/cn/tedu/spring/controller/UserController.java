@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,7 +14,6 @@ import com.google.gson.Gson;
 
 import cn.tedu.spring.entity.User;
 import cn.tedu.spring.mapper.UserMapper;
-import cn.tedu.spring.service.UserServiceImpl;
 
 @Controller
 public class UserController {

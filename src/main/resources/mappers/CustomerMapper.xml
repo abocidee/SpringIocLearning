@@ -13,6 +13,39 @@
 		FROM
 		customers
 	</select>
+	
+	<select id="queryCustomerOrder" resultMap="customerOrder">
+	SELECT      customername,
+                phone,
+                c.customernumber,
+                orderNumber,
+				orderdate,
+				requireddate,
+                shippeddate,
+                status,
+				comments  
+    from classicmodels.orders as o right join classicmodels.customers  as c on  o.customernumber=c.customernumber;
+	</select>
+	
+	<resultMap type="cn.tedu.spring.joinentity.CustomerOrder" id="customerOrder">
+	<id property="customerNumber" column="customerNumber"/>
+	<result property="customerName" column="customerName"></result>
+	<result property="contactLastName" column="contactLastName"></result>
+	<result property="contactFirstName" column="contactFirstName"></result>
+	<result property="phone" column="phone"></result>
+	<result property="addressLine1" column="addressLine1"></result>
+	<result property="addressLine2" column="addressLine2"></result>
+	<result property="city" column="city"></result>
+	<result property="state" column="state"></result>
+	<result property="postalCode" column="postalCode"></result>
+	<result property="country" column="country"></result>
+	<result property="salesRepEmployeeNumber" column="salesRepEmployeeNumber"></result>
+	<result property="creditLimit" column="creditLimit"></result>
+    <association property="order" javaType="cn.tedu.spring.entity.Order">
+    <id property="customerNumber" column="customerNumber"/>
+    </association>	
+	
+	</resultMap>
 </mapper>
 
 
